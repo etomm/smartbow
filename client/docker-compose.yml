@@ -1,0 +1,68 @@
+version: '3'
+services:
+  smartbow:
+    container_name: smartbow
+    image: etomm/smartbow:0.0.1
+    build: 
+      context: .
+    restart: unless-stopped
+#    security_opt:
+#      - seccomp:unconfined #optional
+    environment:
+      - PUID=740814104
+      - PGID=740800513
+      - TZ=Europe/Rome
+      #- PASSWORD= #optional
+#      - CLI_ARGS=--with-library /freenas/multimedia/ebooks
+      #- CUSTOM_PORT=6281
+      #- CUSTOM_HTTPS_PORT=6243
+      #- SUBFOLDER
+#    volumes:
+#      - calibre-library:/freenas/multimedia/ebooks
+#      - /mnt/configurations/calibre/calibre-config:/config/.config/calibre
+#      - /mnt/configurations/calibre/kindle-config:/config/.config/kindle
+#      - /mnt/configurations/calibre/library:/config/library
+#      - /mnt/configurations/calibre/ssl:/config/ssl
+    ports:
+      #- 6281:6281
+      #- 6243:6243
+      #- 6280:6280
+      - 8080:8080
+      - 8443:8443
+
+#volumes:
+  #calibre-ssl:
+  #  name: calibre-ssl
+  #  driver: local
+  #  driver_opts:
+  #    type: none
+  #    o: bind
+  #    device: /mnt/configurations/calibre/ssl
+  #calibre-config:
+  #  name: calibre-config
+  #  driver: local
+  #  driver_opts:
+  #    type: none
+  #    o: bind
+  #    device: /mnt/configurations/calibre/calibre-config
+  #kindle-config:
+  #  name: calibre-kindle-config
+  #  driver: local
+  #  driver_opts:
+  #    type: none
+  #    o: bind
+  #    device: /mnt/configurations/calibre/kindle-config
+  #kindle-library:
+  #  name: calibre-kindle-library    
+  #  driver: local
+  #  driver_opts:
+  #    type: none
+  #    o: bind
+  #    device: /mnt/configurations/calibre/library
+  #calibre-library:
+  #  name: calibre-library    
+  #  driver: local
+  #  driver_opts:
+  #    type: cifs
+  #    o: username=mediamanager@valinor.ercole.li,password=480837ef97,vers=3.0,nobrl,uid=740814104,gid=740814104
+  #    device: //192.168.0.16/Multimedia/eBooks
